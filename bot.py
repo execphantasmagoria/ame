@@ -6,7 +6,7 @@ from subprocess import run
 with open('token.txt', 'r') as f:
 	TOKEN = str(f.readline())
 
-client = commands.Bot(command_prefix = 'a.')
+client = commands.Bot(command_prefix = 'py ')
 
 #Events
 
@@ -22,11 +22,20 @@ async def kilu(ctx):
 	await ctx.send('Killerok, do your assignment.')
 
 @client.command()
-async def code(ctx, *, args):
-	await ctx.send(args)
+async def lineit(ctx, *, args):
+	with open("tester.py", "r") as f:
+		file = f.readlines()
+
+	c = 0
+	txt = ""
+
+	for line in file:
+		c += 1
+		txt += "```py\n" + str(c) + " " + line + "```"
+	await ctx.send(f'{txt}')
 
 @client.command()
-async def run(ctx, *, args):
+async def errs(ctx, *, args):
 	with open("tester.py", "w") as f:
 		f.write(args)
 	try:
