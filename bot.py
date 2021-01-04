@@ -23,6 +23,9 @@ async def kilu(ctx):
 
 @client.command()
 async def lineit(ctx, *, args):
+	with open("tester.py", "w") as f:
+		f.write(args)
+
 	with open("tester.py", "r") as f:
 		file = f.readlines()
 
@@ -31,18 +34,9 @@ async def lineit(ctx, *, args):
 
 	for line in file:
 		c += 1
-		txt += "```py\n" + str(c) + " " + line + "```"
-	await ctx.send(f'{txt}')
+		txt += "```py\n" + str(c) + "   " + line + "```"
 
-@client.command()
-async def errs(ctx, *, args):
-	with open("tester.py", "w") as f:
-		f.write(args)
-	try:
-		os.system('python tester.py')
-
-	except Exception as e:		
-		await ctx.send(f"WARNING:\n{e}")
+	await ctx.send(txt)
 
 	
 #Run		
