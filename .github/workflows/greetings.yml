@@ -1,0 +1,13 @@
+name: Greetings
+
+on: [pull_request, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: 'Your issue has been submitted to the developer. Please wait patiently as due to lack of members in the active development team, response may be slow.'
+        pr-message: 'Your pull request has been submitted. Your request shall be reviewed shortly and you shall be notified.'
