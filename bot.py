@@ -49,6 +49,14 @@ async def check(ctx, *, args):
 		exec(code, globals, locals)
 		await ctx.send('No errors. Code is clean.')
 	except Exception as e:
+		foo = str(e)
+		li = foo.split()
+		for i in li:
+			if i == "line":
+				inx = li.index(i)
+				ern = li[inx+1]
+				ern = ern.replace(")", "")
+
 		with open("tester.py", "r") as f:
 			file = f.readlines()
 
@@ -57,19 +65,13 @@ async def check(ctx, *, args):
 
 		for line in file:
 			c += 1
-			txt += "```py\n" + str(c) + "   " + line + "```"
+			if int(c) == int(ern):
+				txt += "```py\n" + "‣" + str(c) + "   " + line + "```"
+			else:	
+				txt += "```py\n" + str(c) + "   " + line + "```"
 
 		await ctx.send(txt)
 		await ctx.send(f':red_square: __WARNING__ :red_square: :\n{e}')
-		await ctx.send('---')
-		foo = str(e)
-		li = foo.split()
-		for i in li:
-			if i == "line":
-				inx = li.index(i)
-				msg = li[inx+1]
-				msg = msg.replace(")", "")
-				await ctx.send(msg)
 
 
 
