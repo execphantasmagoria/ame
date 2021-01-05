@@ -1,7 +1,7 @@
 import discord
 import os
 from discord.ext import commands
-from subprocess import run
+import sys
 
 with open('token.txt', 'r') as f:
 	TOKEN = str(f.readline())
@@ -73,10 +73,32 @@ async def check(ctx, *, args):
 		await ctx.send(txt)
 		await ctx.send(f':red_square: __WARNING__ :red_square: :\n{e}')
 
+@client.command()
+async def run(ctx, *, args):
 
+	with open("tester.py", "w") as f:
+		f.write(f'import sys\n\nsys.stdout = open("out.txt", "w")\n\n{args}\n\nsys.stdout.close()')
 
+	with open("tester.py", "r") as f:
+		code = compile(f.read(), "tester.py", "exec")
+	exec(code)
 
+	with open("out.txt", "r") as output:
+		msg = output.readline()
+		await ctx.send(msg)
 
+@client.command()
+async def shell(ctx):
+	await ctx.send('Are you sure you want to activate shell? (y/n)')
+
+	msg = await client.wait_for("message", check=lambda m: m.author == ctx.author and m.channel.id == ctx.channel.id)
+	
+	if msg.content == "y":
+		await ctx.send('done')
+	elif msg.content == "n":
+		await ctx.send('ok')
+	else:
+		await ctx.send('aborting...')		
 	
 #Run		
 

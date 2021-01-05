@@ -1,24 +1,9 @@
-import discord
-from discord.ext import commands
+import sys
 
-client = commands.Bot(command_prefix = '?')
+sys.stdout = open("out.txt", "w")
 
-#Events
+k = input("hey: ")
 
-@client.event
-async def on_ready():
-    print("bot is ready")
+print(f"hey {k}")
 
-#Commands
-
-@client.command()
-async def smth(ctx):
-    ctx.send('hello!')
-
-@client.command()
-async def again(ctx, msg)
-    ctx.send(msg)
-
-#Run        
-
-client.run('---')
+sys.stdout.close()
