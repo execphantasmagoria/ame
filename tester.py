@@ -2,8 +2,9 @@ import sys
 
 sys.stdout = open("out.txt", "w")
 
-k = input("hey: ")
+def xyz():
+    print("test")
+xyz()
 
-print(f"hey {k}")
 
 sys.stdout.close()
