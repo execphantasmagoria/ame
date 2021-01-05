@@ -6,7 +6,7 @@ from subprocess import run
 with open('token.txt', 'r') as f:
 	TOKEN = str(f.readline())
 
-client = commands.Bot(command_prefix = 'k ')
+client = commands.Bot(command_prefix = 'py ')
 
 #Events
 

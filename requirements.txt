@@ -17,16 +17,9 @@ numpy==1.19.4
 pandas==1.1.5
 Pygments==2.7.3
 pylint==2.6.0
-PyQt5==5.15.2
-pyqt5-plugins==5.15.2.2.0.1
-PyQt5-sip==12.8.1
-pyqt5-tools==5.15.2.3
-PySide2==5.15.2
 python-dateutil==2.8.1
 python-dotenv==0.15.0
 pytz==2020.4
-qt5-applications==5.15.2.2.1
-qt5-tools==5.15.2.1.0.1
 rich==9.5.1
 shiboken2==5.15.2
 six==1.15.0
