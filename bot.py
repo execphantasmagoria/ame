@@ -63,8 +63,14 @@ async def check(ctx, *, args):
 		await ctx.send(f':red_square: __WARNING__ :red_square: :\n{e}')
 		await ctx.send('---')
 		foo = str(e)
-		for i in foo.split():
-			await ctx.send(f'{i};')
+		li = foo.split()
+		for i in li:
+			if i == "line":
+				inx = li.index(i)
+				msg = li[inx+1]
+				msg = msg.replace(")", "")
+				await ctx.send(msg)
+
 
 
 
