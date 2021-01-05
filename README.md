@@ -5,10 +5,12 @@ A shared reposoitory for python projects and their development amongst me, [Zeni
 
 ---
 
-## Version Changelogs (Current Version: 1.0.0)
+# Version Changelogs:
+
+## Ver - 1.0.0
 
 - Added this.
 
-## Version Changelogs (Current Version: 1.0.1)
+## Ver - 1.0.1
 
 - Added `lineit` and `check` commands.
