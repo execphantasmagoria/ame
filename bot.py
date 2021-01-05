@@ -46,11 +46,28 @@ async def check(ctx, *, args):
 	try:
 		with open("tester.py", "r") as f:
 			code = compile(f.read(), "tester.py", "exec")
-		exec(code)
+		exec(code, globals, locals)
 		await ctx.send('No errors. Code is clean.')
 	except Exception as e:
-		await ctx.send(f'WARNING:\n{e}')
-			
+		with open("tester.py", "r") as f:
+			file = f.readlines()
+
+		c = 0
+		txt = ""
+
+		for line in file:
+			c += 1
+			txt += "```py\n" + str(c) + "   " + line + "```"
+
+		await ctx.send(txt)
+		await ctx.send(f':red_square: __WARNING__ :red_square: :\n{e}')
+		await ctx.send('---')
+		foo = str(e)
+		for i in foo.split():
+			await ctx.send(f'{i};')
+
+
+
 
 	
 #Run		
