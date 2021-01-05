@@ -44,10 +44,13 @@ async def check(ctx, *, args):
 		f.write(args)
 
 	try:
-		os.system("python tester.py")
+		with open("tester.py", "r") as f:
+			code = compile(f.read(), "tester.py", "exec")
+		exec(code)
 		await ctx.send('No errors. Code is clean.')
 	except Exception as e:
-		await ctx.send(f'WARNING:\n{e}')	
+		await ctx.send(f'WARNING:\n{e}')
+			
 
 	
 #Run		
